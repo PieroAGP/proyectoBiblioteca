@@ -1,7 +1,8 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from .models import Book
 from django.views import View
 from .forms import BookForm
+
 # Create your views here.
 
 
@@ -35,4 +36,8 @@ class NewBook(View):
             return redirect('listBook')
         return render(request,self.template_name,{'books': self.actualizaTask(),'form':form})
 
+class DetailBook(View):
+    def get(self, request, pk):
+        book = get_object_or_404(Book,pk=pk)
+        return render(request,'book/detailBook.html',{'book':book})
     
