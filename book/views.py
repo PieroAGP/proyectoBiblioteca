@@ -41,3 +41,17 @@ class DetailBook(View):
         book = get_object_or_404(Book,pk=pk)
         return render(request,'book/detailBook.html',{'book':book})
     
+class EditBook(View):
+    def get(self,request,pk):
+        book= get_object_or_404(Book, pk=pk)
+        form=BookForm(instance=book)
+        return render(request,'book/editBook.html',{'book':book, 'form':form})
+    
+    def post(self,request,pk):
+        book= get_object_or_404(Book, pk=pk)
+        form=BookForm(request.POST, instance=book)
+        if form.is_valid():
+            book=form.save(commit=False)
+            form.save()
+            return redirect('detailBook', pk=pk)
+        return render(request,'book/editBook.html',{'book':book, 'form':form})

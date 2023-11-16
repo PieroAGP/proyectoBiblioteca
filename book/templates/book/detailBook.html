@@ -13,5 +13,16 @@
     <p><b>Synopsis:</b> {{book.synopsys}}</p>
     <p><b>Create:</b> {{book.create_at}}</p>
     <p><b>Update:</b> {{book.update_at}}</p>
+
+    <form action="{% url 'editBook' pk=book.pk %}" method="get">
+        <button type="submit"> Edit </button>
+    </form>
+    <br>
+    <form action="{% url 'listBook' %}" method="get">
+        <button type="submit"> List books </button>
+    </form>
+    
+    
+
 </body>
 </html>
