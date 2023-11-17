@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.classless.min.css">
-</head>
-<body>
+{% extends 'book/base.html' %}
+{% block title%} <title>new book</title> {% endblock %}
+
+{% block content %}
     <h1>Details</h1>
     <p><b>Title:</b> {{book.title}}</p>
     <p><b>Author:</b> {{book.author}}</p>
@@ -20,7 +15,4 @@
     <br>
     <a href="{% url 'listBook' %}" role="button">List books</a>
 
-    
-
-</body>
-</html>
+{% endblock %}

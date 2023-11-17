@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.classless.min.css">
-
-</head>
-<body>
+{% extends 'book/base.html' %}
+{% block title%} <title>edit</title> {% endblock %}
+{% block content %}
     <h1>Edit book</h1>
     <form action="{% url 'editBook' pk=book.pk %}" method="post" >
         {% csrf_token %}
         {{ form.as_p}}
         <button type="submit">Confirm</button>
     </form>
-</body>
-</html>
+{% endblock %}
