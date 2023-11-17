@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect, get_object_or_404
 from .models import Book
 from django.views import View
 from .forms import BookForm
+from django.views.generic import ListView, DetailView
 
 # Create your views here.
 
@@ -16,6 +17,10 @@ class BookList(View):
 
     def get(self,request):
         return render(request,self.template_name,{'books': self.actualizaTask()})
+#-------new
+class BookListView(ListView):
+    model = Book
+    template_name='book/bookList.html'
 
 class NewBook(View):
     books= Book.objects.all()
@@ -40,7 +45,11 @@ class DetailBook(View):
     def get(self, request, pk):
         book = get_object_or_404(Book,pk=pk)
         return render(request,'book/detailBook.html',{'book':book})
-    
+#------new
+class DetailBookView(DetailView):
+    model=Book
+    template_name='book/detailBook.html'
+
 class EditBook(View):
     def get(self,request,pk):
         book= get_object_or_404(Book, pk=pk)

@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.classless.min.css">
 </head>
 <body>
     <h1>libros</h1>
-    {% for book in books %}
+    {% for book in book_list %}
 
         <h3><a href="{% url 'detailBook' pk=book.pk %}">libro: {{book.title}}</a></h3>
 
