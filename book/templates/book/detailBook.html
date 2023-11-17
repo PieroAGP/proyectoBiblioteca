@@ -15,14 +15,11 @@
     <p><b>Create:</b> {{book.create_at}}</p>
     <p><b>Update:</b> {{book.update_at}}</p>
 
-    <form action="{% url 'editBook' pk=book.pk %}" method="get">
-        <button type="submit"> Edit </button>
-    </form>
-    <br>
-    <form action="{% url 'listBook' %}" method="get">
-        <button type="submit"> List books </button>
-    </form>
+    <a href="{% url 'editBook' pk=book.pk %}" role="button">Edit</a>
     
+    <br>
+    <a href="{% url 'listBook' %}" role="button">List books</a>
+
     
 
 </body>
